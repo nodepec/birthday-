@@ -20,7 +20,7 @@
 </head>
 <body>
   <h1>Java Quiz</h1>
-  <p id="hint">Hint: the flag is obfuscated in ROT47.</p>
+  <p id="hint">Hint: the flag is obfuscated in a form of ROT.</p>
   <form id="quiz">
     <label for="q1">1. What is printed by:<br><code>System.out.println(1+2+"3");</code></label>
     <input type="text" id="q1" autocomplete="off"/>
@@ -34,6 +34,22 @@
   </form>
 
   <script>
+    // Basic anti-inspect deterrents
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+      if (
+        e.key === 'F12' ||
+        (e.ctrlKey && e.shiftKey && e.key === 'I') ||
+        (e.ctrlKey && e.shiftKey && e.key === 'J') ||
+        (e.ctrlKey && e.key === 'U') ||
+        (e.ctrlKey && e.key === 'S') ||
+        (e.ctrlKey && e.key === 'C')
+      ) {
+        e.preventDefault();
+      }
+    });
+
+    // Quiz logic
     (function(){
       var answers = {
         q1: '33',
@@ -41,7 +57,7 @@
         q3: 'false'
       };
 
-      var flagEncoded = 'L92AAJ03:CE952JN';
+      var flagEncoded = 'wha((u_bi*phdauy H92E J62C H6C6 J@F 3@C? :?n ;F=:FD dgqr';
 
       document.getElementById('quiz').addEventListener('submit', function(e){
         e.preventDefault();
